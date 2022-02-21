@@ -1,17 +1,16 @@
-const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const cTable = require('console.table');
-const db = require('./config/connection');
-const viewDepartment = require('./actions/viewDepartment');
-const viewEmployees = require('./actions/viewEmployees');
-const viewRoles = require('./actions/viewRoles');
-const addDepartment = require('./actions/addDepartment');
-const addEmployee = require('./actions/addEmployee');
-const addRole = require('./actions/addRole')
-const updateEmployee = require('./actions/updateEmployee')
+const db = require("../config/connection")
+const viewDepartment = require('./viewDepartment');
+const viewEmployees = require('./viewEmployees');
+const viewRoles = require('./viewRoles');
+const addDepartment = require('./addDepartment');
+const addEmployee = require('./addEmployee');
+const addRole = require('./addRole');
+const updateEmployee = require('./updateEmployee')
 
-function start() {
-    return inquirer.prompt([
+const home = () => {
+    // console.log(home);
+    inquirer.prompt([
         {
             name: "firstOptions",
             type: "list",
@@ -56,8 +55,6 @@ function start() {
         }
     })
 }
+// home();
 
-function init () {
-    start();
-}
-init();
+module.exports = home;
