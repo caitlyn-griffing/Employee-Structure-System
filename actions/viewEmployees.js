@@ -1,13 +1,13 @@
 const db = require("../config/connection");
 const cTable = require('console.table');
 
-function viewDepartment() {
+function viewEmployee() {
     db.query(
-        "SELECT * FROM department",
+        "SELECT * FROM employee",
         (err, results) => {
             err ? console.log(err): console.log(results) 
         } 
     )
 }
 
-module.exports = viewDepartment;
+module.exports = viewEmployee;

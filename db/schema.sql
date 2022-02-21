@@ -1,19 +1,14 @@
-DROP DATABASE employee_structure_system;
-
+DROP DATABASE IF EXISTS employee_structure_system;
 CREATE DATABASE employee_structure_system;
-
 USE	employee_structure_system;
 
------ TABLES ----
-
------ DEPARTMENT -----
+DROP TABLE IF EXISTS department;
 CREATE TABLE department(
-	id INT NOT NULL AUTO_INCREMENT,
+    id INT AUTO_INCREMENT NOT NULL,
     name VARCHAR(30),
     PRIMARY KEY(id)
 );
-
------ ROLE -----
+DROP TABLE IF EXISTS emp_role;
 CREATE TABLE emp_role(
 	id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(30),
@@ -22,14 +17,13 @@ CREATE TABLE emp_role(
     PRIMARY KEY(id),
     FOREIGN KEY(department_id) REFERENCES department(id)
 );
-
------ EMPLOYEE -----
+DROP TABLE IF EXISTS employee;
 CREATE TABLE employee(
 	id INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30),
 	last_name VARCHAR(30),
-    role_id INT,
-    manager_id INT AUTO_INCREMENT,
+    emp_role_id INT,
+    manager_id INT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY(role_id) REFERENCES role(id)
+    FOREIGN KEY(emp_role_id) REFERENCES emp_role(id)
 );
