@@ -21,8 +21,9 @@ const updateEmployeeRole = [
 ]
 
 function updateEmployee() {
-    const home = require('./home');
+    
     inquirer.prompt(updateEmployeeRole).then(answer => {
+        const home = require('./home');
         let query = `UPDATE employee SET employee.emp_role_id = ${answer.newRole} WHERE employee.first_name = ? AND employee.last_name = ?`;
         db.query(query, [answer.first_name, answer.last_name, answer.newRole], (err, results) => {
             err ? console.log(err) : console.log(`\n\n${answer.first_name} ${answer.last_name}'s Role as been updated\n`); console.log(results);

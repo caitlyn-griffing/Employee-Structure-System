@@ -30,7 +30,7 @@ function start() {
     ]).then(async function (answer) {
         switch (answer.firstOptions) {
             case "View Departments":
-                await viewDepartment();
+                viewDepartment();
                 break;
             case "View Roles":
                 await viewRoles();
@@ -45,7 +45,7 @@ function start() {
                 await addRole();
                 break;
             case "Add Employee":
-                await addEmployee();
+                addEmployee();
                 break;
             case "Update Employee Role":
                 await updateEmployee();

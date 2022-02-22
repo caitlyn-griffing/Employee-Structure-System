@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const db = require("../config/connection");
-const home = require('./home');
+
 
 function addEmployee() {
     inquirer.prompt([
@@ -20,14 +20,14 @@ function addEmployee() {
             message: "Enter ID"
         }
     ])
-    .then( async ({first_name, last_name, emp_role_id} ) => {
-        
+    .then(({first_name, last_name, emp_role_id} ) => {
+        const home = require('./home');
         let query = 'INSERT INTO employee (first_name, last_name, emp_role_id) VALUES (?,?,?)';
-        await db.query(query, [first_name, last_name, emp_role_id], (err, results) =>{
+        db.query(query, [first_name, last_name, emp_role_id], (err, results) =>{
             err ? console.log(err) : console.log('Added new employee')
         }) 
         home();
-    }).catch(err => {
+    }).catch (err => {
         console.log(err);
     })
 }
